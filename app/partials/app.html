@@ -1,0 +1,35 @@
+<h1>Book Worms Feast</h1>
+
+<div class="row" ng-controller="ReadingListController as readingListCtrl" >
+
+  <button class="btn btn-default" ng-click="reviewFormCtrl.showForm=!reviewFormCtrl.showForm" >{{reviewFormCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+  <hr />
+ <review-form ng-show ="reviewFormCtrl.showForm" books="readingListCtrl.books" genres="readingListCtrl.genres"></review-form>
+  <hr />
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="book row" ng-repeat= "book in readingListCtrl.books" >
+
+
+        <!-- Cover Directive here-->
+         <book-cover></book-cover>
+
+        <!-- Cover Directive here-->
+
+
+    <!-- Book title-->
+    <div class = "col-sm-9">
+      <h3><a href= "http://www.amazon.com/gp/product/{{book.isbn}}">{{book.title}}</a></h3>
+
+        <cite class="text-muted">Written by {{book.author}}</cite>
+
+      <!-- Book Review-->
+        <p>{{book.review}}</p>
+        <!-- Genre Directive here-->
+        <book-genres genres ="book.genres"></book-genres>
+        <!-- Genre Directive here-->
+      </div>
+
+    </li>
+  </ul>
+</div>
